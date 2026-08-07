@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14-Day Flex Return | GoLoans</title>
+    <meta
+      name="description"
+      content="A flexible return option for selected approved GoLoans customers and eligible renewals."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+:root {
+  --ink: #33373d;
+  --muted: #687078;
+  --violet: #008a00;
+  --violet-dark: #006e00;
+  --violet-soft: #ebf8eb;
+  --mint: #ffe3bf;
+  --mint-dark: #c85f00;
+  --orange: #f8820b;
+  --orange-dark: #d96700;
+  --paper: #f7f8f6;
+  --line: #e1e6df;
+  --white: #fff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Open Sans", Arial, sans-serif;
+  margin: 0;
+  line-height: 1.5;
+}
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+
+.topbar {
+  z-index: 10;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  height: 76px;
+  margin: auto;
+  padding: 0 28px;
+  display: flex;
+  position: relative;
+}
+.brand {
+  color: var(--ink);
+  letter-spacing: -.04em;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+}
+.brand-logo {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+.brand-mark {
+  color: #fff;
+  background: linear-gradient(135deg, #0f9f4f, #008a00);
+  border-radius: 10px;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 19px;
+  display: grid;
+  box-shadow: rgba(0,138,0,.22) 0 8px 18px;
+}
+.secure-note {
+  color: #536078;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 650;
+  display: inline-flex;
+}
+.secure-note i {
+  background: #32bf8c;
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  box-shadow: #dff8ef 0 0 0 4px;
+}
+
+.hero {
+  background: linear-gradient(145deg, #f5fff5 0%, #fbfcf9 50%, #fff6eb 100%);
+  border-top: 1px solid #e4eae1;
+  border-bottom: 1px solid #dde5db;
+  min-height: 650px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  opacity: .32;
+  background-image: radial-gradient(#63aa63 .7px, transparent .7px);
+  background-size: 22px 22px;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent 46%);
+  mask-image: linear-gradient(90deg, #000, transparent 46%);
+}
+.hero-inner {
+  z-index: 2;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: center;
+  gap: 76px;
+  max-width: 1200px;
+  min-height: 650px;
+  margin: auto;
+  padding: 78px 28px 88px;
+  display: grid;
+  position: relative;
+}
+.orb { filter: blur(2px); border-radius: 50%; position: absolute; }
+.orb-one { background: rgba(0,138,0,.12); width: 520px; height: 520px; top: -270px; right: -210px; }
+.orb-two { background: rgba(248,130,11,.13); width: 380px; height: 380px; bottom: -280px; left: -250px; }
+.eyebrow {
+  color: #007700;
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  background: rgba(255,255,255,.82);
+  border: 1px solid #b9dfb9;
+  border-radius: 999px;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 13px 7px 8px;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  box-shadow: rgba(0,100,0,.06) 0 8px 30px;
+}
+.eyebrow span {
+  background: var(--violet);
+  color: #fff;
+  letter-spacing: 0;
+  border-radius: 50%;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  font-size: 11px;
+  display: grid;
+}
+.kicker {
+  color: var(--violet);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: 26px 0 12px;
+  font-size: 12px;
+  font-weight: 850;
+}
+h1 {
+  letter-spacing: -.055em;
+  max-width: 680px;
+  margin: 0;
+  font-size: clamp(44px,5.2vw,68px);
+  font-weight: 780;
+  line-height: 1.02;
+}
+h1 em { color: var(--violet); font-style: normal; }
+.hero-lead { color: #526078; max-width: 650px; margin: 24px 0 0; font-size: 18px; line-height: 1.72; }
+.hero-actions { gap: 12px; margin-top: 34px; display: flex; }
+.button {
+  border: 0;
+  border-radius: 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  min-height: 52px;
+  padding: 0 21px;
+  font-weight: 780;
+  transition: transform .2s, box-shadow .2s, background .2s;
+  display: inline-flex;
+}
+.button:hover { transform: translateY(-2px); }
+.button-primary {
+  color: #fff;
+  background: linear-gradient(135deg,#fb921f,#f07800);
+  box-shadow: rgba(216,101,0,.24) 0 14px 30px, rgba(255,255,255,.28) 0 1px inset;
+}
+.button-primary:hover { box-shadow: rgba(216,101,0,.31) 0 18px 38px, rgba(255,255,255,.28) 0 1px inset; }
+.button-primary:disabled { cursor: not-allowed; opacity: .45; box-shadow: none; transform: none; }
+.button-ghost { color: #526079; background: transparent; border: 1px solid #d7dce7; }
+.button-ghost:hover { background: #fff; }
+.microcopy { color: #7a8599; margin: 15px 0 0; font-size: 12px; line-height: 1.5; }
+
+.window-card {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(193,220,190,.9);
+  border-radius: 28px;
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(1deg);
+  box-shadow: rgba(44,74,44,.14) 0 35px 80px, #fff 0 1px inset;
+}
+.card-glow { filter: blur(60px); opacity: .7; background: #c5f2e2; border-radius: 50%; width: 220px; height: 220px; position: absolute; top: -120px; right: -80px; }
+.window-card-head { color: #5f6980; border-bottom: 1px solid #e8e8f0; justify-content: space-between; align-items: center; padding-bottom: 22px; font-size: 13px; font-weight: 700; display: flex; position: relative; }
+.window-card-head b { color: #007900; letter-spacing: .08em; background: #ebf8eb; border-radius: 9px; padding: 7px 10px; font-size: 11px; }
+.timeline { height: 206px; margin: 25px 5px 16px; position: relative; }
+.timeline-line { background: #e5e3ed; border-radius: 3px; width: 3px; position: absolute; top: 30px; bottom: 28px; left: 22px; overflow: hidden; }
+.timeline-line span { background: linear-gradient(var(--violet),#37a737); border-radius: inherit; height: 52%; display: block; }
+.timeline-point { align-items: center; gap: 14px; display: flex; position: absolute; left: 0; }
+.timeline-point i { background: var(--violet); color: #fff; border: 6px solid #e5f5e5; border-radius: 50%; place-items: center; width: 47px; height: 47px; font-size: 11px; font-style: normal; font-weight: 850; display: grid; box-shadow: rgba(0,138,0,.18) 0 5px 12px; }
+.timeline-point div { flex-direction: column; gap: 4px; display: flex; }
+.timeline-point strong { font-size: 14px; }
+.timeline-point small { color: #7b8597; font-size: 12px; }
+.point-start { top: 2px; }
+.point-end { bottom: 2px; }
+.point-end i { color: #a64c00; background: var(--mint); border-color: #fff1df; }
+.choice-grid { grid-template-columns: 1fr 1fr; gap: 10px; display: grid; position: relative; }
+.choice { background: #fafbfc; border: 1px solid #e0e4ec; border-radius: 17px; flex-direction: column; align-items: flex-start; gap: 7px; min-height: 126px; padding: 16px; display: flex; }
+.choice.active { background: #f3fbf3; border-color: #bfddbc; }
+.choice-icon { width: 29px; height: 29px; color: var(--violet); background: #e4f5e4; border-radius: 8px; place-items: center; font-weight: 900; display: grid; }
+.choice strong { font-size: 13px; }
+.choice small { color: #788398; font-size: 11px; line-height: 1.4; }
+
+.trust-strip { z-index: 4; background: #fff; border: 1px solid #e1e4ec; border-radius: 18px; grid-template-columns: repeat(3,1fr); max-width: 1000px; margin: -30px auto 0; display: grid; position: relative; box-shadow: rgba(49,55,87,.1) 0 20px 50px; }
+.trust-strip > div { align-items: center; gap: 12px; padding: 21px 26px; display: flex; }
+.trust-strip > div + div { border-left: 1px solid #e9ebf1; }
+.trust-strip b { color: #168365; background: #e5f8f0; border-radius: 50%; flex: 0 0 auto; place-items: center; width: 28px; height: 28px; font-size: 12px; display: grid; }
+.trust-strip span { color: #8891a3; flex-direction: column; gap: 2px; font-size: 11px; display: flex; }
+.trust-strip strong { color: var(--ink); font-size: 12px; }
+
+.section { max-width: 1120px; margin: auto; padding: 105px 28px; }
+.section-heading { text-align: center; max-width: 640px; margin: auto; }
+.section-heading.left { text-align: left; margin-left: 0; }
+.section-heading .kicker, .eligibility .kicker, .decision-copy .kicker { margin-top: 0; }
+h2 { letter-spacing: -.045em; margin: 0; font-size: clamp(34px,4vw,48px); line-height: 1.1; font-weight: 400; }
+.section-heading > p:last-child { color: var(--muted); font-size: 16px; line-height: 1.7; }
+.steps { grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 58px; display: grid; }
+.steps article { border: 1px solid var(--line); background: #fff; border-radius: 22px; min-height: 260px; padding: 28px; position: relative; overflow: hidden; }
+.steps article > span { color: #edf0f6; letter-spacing: -.08em; font-size: 54px; font-weight: 900; position: absolute; top: 12px; right: 20px; }
+.step-icon { width: 46px; height: 46px; color: var(--violet); background: var(--violet-soft); border-radius: 13px; place-items: center; font-weight: 900; display: grid; }
+.steps h3 { margin: 54px 0 10px; font-size: 19px; }
+.steps p { color: var(--muted); margin: 0; font-size: 14px; line-height: 1.65; }
+
+.comparison-section { padding-top: 70px; }
+.comparison { grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 42px; display: grid; position: relative; }
+.compare-card { border: 1px solid var(--line); background: #fff; border-radius: 26px; min-height: 470px; padding: 36px; }
+.return-card { border-color: #badcba; box-shadow: rgba(0,110,0,.09) 0 22px 55px; }
+.compare-label { color: #007500; text-transform: uppercase; letter-spacing: .1em; background: #eaf7ea; border-radius: 999px; padding: 8px 12px; font-size: 11px; font-weight: 850; display: inline-flex; }
+.keep-card .compare-label { color: #59667c; background: #eef1f5; }
+.compare-card h3 { letter-spacing: -.035em; margin: 24px 0 10px; font-size: 29px; }
+.compare-card > p { min-height: 54px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.compare-card ul { border-top: 1px solid #eceef3; margin: 24px 0 0; padding: 18px 0 0; list-style: none; }
+.compare-card li { color: #4f5b71; gap: 11px; padding: 11px 0; font-size: 14px; display: flex; }
+.compare-card li span { color: #248369; font-weight: 900; }
+.compare-card li.highlight { color: #006f00; background: #ebf8eb; border-radius: 12px; margin: 8px -13px -2px; padding: 14px 13px; font-weight: 800; }
+.compare-card li.highlight span { color: #008a00; }
+.compare-card li.muted { color: #7c879a; }
+.or-badge { z-index: 2; border: 5px solid var(--paper); background: var(--ink); color: #fff; border-radius: 50%; place-items: center; width: 42px; height: 42px; font-size: 10px; font-weight: 900; display: grid; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.clarity-note { color: #5d687d; background: #f0f2f7; border: 1px solid #e3e5ed; border-radius: 14px; margin: 18px 0 0; padding: 18px 22px; font-size: 12px; line-height: 1.65; }
+.clarity-note strong { color: var(--ink); }
+
+.eligibility { background: var(--ink); color: #fff; grid-template-columns: .8fr 1.2fr; gap: 80px; max-width: none; padding: 88px max(28px,calc(50vw - 532px)); display: grid; }
+.eligibility-copy > p:last-child { color: #aeb7c7; line-height: 1.7; }
+.eligibility .kicker { color: #ff9c38; }
+.eligibility-list { gap: 12px; display: grid; }
+.eligibility-list > div { background: rgba(255,255,255,.043); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; align-items: flex-start; gap: 14px; padding: 20px; display: flex; }
+.eligibility-list > div > span { color: #bdf0dd; background: rgba(54,194,147,.15); border-radius: 50%; flex: 0 0 auto; place-items: center; width: 27px; height: 27px; font-size: 11px; display: grid; }
+.eligibility-list p { color: #aeb7c7; flex-direction: column; gap: 4px; margin: 0; font-size: 12px; line-height: 1.55; display: flex; }
+.eligibility-list strong { color: #fff; font-size: 14px; }
+
+.faq { max-width: 940px; }
+.faq-grid { border-top: 1px solid var(--line); margin-top: 45px; }
+details { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; justify-content: space-between; align-items: center; padding: 23px 5px; font-size: 15px; font-weight: 760; list-style: none; display: flex; }
+summary::-webkit-details-marker { display: none; }
+summary span { color: var(--violet); font-size: 22px; font-weight: 400; transition: transform .2s; }
+details[open] summary span { transform: rotate(45deg); }
+details p { max-width: 760px; color: var(--muted); margin: -5px 5px 23px; font-size: 14px; line-height: 1.7; }
+
+.decision-section { background: var(--paper); padding: 20px 28px 100px; }
+.decision-wrap { max-width: 1040px; margin: auto; }
+.decision-heading { max-width: 680px; margin: 0 auto 34px; }
+.next-step-grid { grid-template-columns: 1fr 1fr; align-items: stretch; gap: 18px; display: grid; }
+.next-step-card { background: #fff; border: 1px solid #dce3da; border-radius: 24px; flex-direction: column; min-height: 460px; padding: 34px; display: flex; box-shadow: rgba(51,55,61,.09) 0 24px 60px; }
+.next-step-card.featured { border-color: #8bc88b; box-shadow: rgba(0,115,0,.12) 0 25px 65px; }
+.next-step-label { color: #007800; text-transform: uppercase; letter-spacing: .1em; background: #eaf7ea; border-radius: 999px; align-self: flex-start; padding: 7px 10px; font-size: 10px; font-weight: 850; }
+.renewal-step .next-step-label { color: #a44d00; background: #fff0df; }
+.next-step-icon { color: #fff; background: #008a00; border-radius: 13px; place-items: center; width: 45px; height: 45px; margin-top: 24px; font-weight: 900; display: grid; }
+.next-step-icon.renewal { background: var(--orange); font-size: 22px; }
+.next-step-card h3 { letter-spacing: -.035em; margin: 22px 0 10px; font-size: 24px; }
+.next-step-card > p { color: var(--muted); margin: 0; font-size: 14px; line-height: 1.65; }
+.renewal-spacer { flex: 1; min-height: 110px; }
+.button-renewal { color: #fff; background: linear-gradient(135deg,#0f9f4f,#008a00); text-decoration: none; box-shadow: rgba(0,120,0,.2) 0 14px 30px; }
+.button-renewal:hover { box-shadow: rgba(0,120,0,.28) 0 18px 38px; }
+.decision-card { background: #fff; border: 1px solid #cfe0cc; border-radius: 26px; max-width: 760px; margin: auto; padding: 44px; box-shadow: rgba(45,72,45,.11) 0 30px 70px; }
+.decision-copy { text-align: center; }
+.decision-copy h2 { font-size: 36px; }
+.decision-copy > p:last-child { color: var(--muted); }
+.consent-row { color: #59657a; cursor: pointer; background: #f5f6fa; border-radius: 13px; align-items: flex-start; gap: 11px; margin: 25px 0 18px; padding: 16px; font-size: 12px; line-height: 1.6; display: flex; }
+.consent-row input { width: 18px; height: 18px; accent-color: var(--orange); flex: 0 0 auto; margin-top: 1px; }
+.button.full { width: 100%; }
+.demo-note { text-align: center; color: #9299a8; margin: 12px 0 0; font-size: 10px; }
+.decision-card.compact { align-items: center; gap: 18px; display: flex; }
+.decision-card.compact h2 { font-size: 26px; }
+.decision-card.compact p { color: var(--muted); margin: 5px 0 0; font-size: 13px; }
+.decision-check { color: #168365; background: #e7f8f1; border-radius: 50%; flex: 0 0 auto; place-items: center; width: 46px; height: 46px; display: grid; }
+.decision-check.neutral { color: #6c778b; background: #eef0f4; }
+.text-button { color: var(--violet); background: transparent; border: 0; margin-left: auto; font-weight: 750; }
+
+footer { background: #fff; border-top: 1px solid #e1e4eb; grid-template-columns: .55fr 1.2fr .55fr; align-items: start; gap: 44px; min-height: 210px; padding: 48px max(28px,calc(50vw - 560px)); display: grid; }
+footer p { color: #8790a1; margin: 0; font-size: 10px; line-height: 1.7; }
+footer > div { justify-content: flex-end; gap: 14px; display: flex; }
+footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
+.footer-brand { font-size: 18px; }
+.footer-brand .brand-logo { width: 125px; }
+.footer-brand .brand-mark { width: 29px; height: 29px; font-size: 15px; }
+.mobile-bar { display: none; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 50px; padding-top: 55px; }
+  .hero-copy { text-align: center; }
+  .hero-copy h1, .hero-lead { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .window-card { width: 100%; max-width: 560px; margin: auto; transform: none; }
+  .trust-strip { margin: -20px 20px 0; }
+  .trust-strip > div { padding: 18px; }
+  .eligibility { grid-template-columns: 1fr; gap: 40px; }
+  footer { grid-template-columns: 1fr; gap: 22px; }
+  footer > div { justify-content: flex-start; }
+}
+
+@media (max-width: 680px) {
+  .topbar { height: 66px; padding: 0 18px; }
+  .brand { font-size: 19px; }
+  .brand-mark { width: 31px; height: 31px; }
+  .secure-note { font-size: 11px; }
+  .hero-inner { min-height: auto; padding: 46px 20px 70px; }
+  .hero-copy { text-align: left; }
+  .hero-copy h1 { font-size: 42px; }
+  .hero-lead { font-size: 16px; line-height: 1.65; }
+  .hero-actions { justify-content: stretch; display: grid; }
+  .button { width: 100%; }
+  .window-card { border-radius: 22px; padding: 20px; }
+  .choice-grid { grid-template-columns: 1fr; }
+  .choice { min-height: 102px; }
+  .trust-strip { grid-template-columns: 1fr; margin-top: -22px; }
+  .trust-strip > div + div { border-top: 1px solid #e9ebf1; border-left: 0; }
+  .section { padding: 78px 20px; }
+  .steps, .comparison { grid-template-columns: 1fr; }
+  .steps article { min-height: 230px; }
+  .compare-card { min-height: auto; padding: 28px 24px; }
+  .compare-card > p { min-height: 0; }
+  .or-badge { top: 50%; }
+  .eligibility { padding: 72px 20px; }
+  .decision-section { padding: 10px 16px 105px; }
+  .decision-card, .next-step-card { padding: 30px 20px; }
+  .next-step-grid { grid-template-columns: 1fr; }
+  .decision-copy h2 { font-size: 31px; }
+  .decision-card.compact { text-align: center; flex-direction: column; }
+  .text-button { margin: 0; }
+  footer { padding: 44px 22px 115px; }
+  .mobile-bar { z-index: 20; padding: 11px 14px calc(11px + env(safe-area-inset-bottom)); backdrop-filter: blur(16px); background: rgba(255,255,255,.94); border-top: 1px solid #dedfe8; justify-content: space-between; align-items: center; gap: 12px; display: flex; position: fixed; bottom: 0; left: 0; right: 0; box-shadow: rgba(36,42,68,.1) 0 -10px 30px; }
+  .mobile-bar > div { flex-direction: column; display: flex; }
+  .mobile-bar small { color: #7d8797; font-size: 9px; }
+  .mobile-bar strong { font-size: 11px; }
+  .mobile-bar .button { width: auto; min-height: 44px; padding: 0 16px; font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
+/* Motion and interaction polish */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes card-arrive {
+  from { opacity: 0; transform: translate3d(28px, 12px, 0) rotate(1deg); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); }
+}
+@keyframes orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(12px, -16px, 0) scale(1.05); }
+}
+@keyframes timeline-fill {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.motion-ready .hero-copy > * {
+  opacity: 0;
+  animation: hero-rise .7s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.motion-ready .hero-copy > :nth-child(1) { animation-delay: .08s; }
+.motion-ready .hero-copy > :nth-child(2) { animation-delay: .16s; }
+.motion-ready .hero-copy > :nth-child(3) { animation-delay: .24s; }
+.motion-ready .hero-copy > :nth-child(4) { animation-delay: .32s; }
+.motion-ready .hero-copy > :nth-child(5) { animation-delay: .40s; }
+.motion-ready .hero-copy > :nth-child(6) { animation-delay: .48s; }
+.motion-ready .window-card {
+  opacity: 0;
+  animation: card-arrive .9s .28s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.motion-ready .timeline-line span {
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: timeline-fill .9s .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.motion-ready .orb { animation: orb-drift 8s ease-in-out infinite; }
+.motion-ready .orb-two { animation-delay: -4s; }
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .65s ease, transform .65s cubic-bezier(.2,.8,.2,1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-item.is-visible { opacity: 1; transform: translateY(0); }
+
+.steps article, .compare-card, .eligibility-list > div, .next-step-card {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.steps article:hover, .compare-card:hover, .next-step-card:hover {
+  transform: translateY(-6px);
+}
+.button {
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.button:hover:not(:disabled) { transform: translateY(-2px); }
+.button:active:not(:disabled) { transform: translateY(0) scale(.98); }
+.brand-logo { transition: transform .25s ease; }
+.brand:hover .brand-logo { transform: scale(1.025); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal-item { opacity: 1; transform: none; }
+}
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="GoLoans home">
+          <img class="brand-logo" src="logo-goloans/Goloans%20logo.svg" alt="GoLoans" />
+        </a>
+        <span class="secure-note"><i></i> Secure customer offer</span>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow"><span>14</span> days of added flexibility</div>
+            <p class="kicker">Application approved</p>
+            <h1>Your loan is approved. <em>Keep your options open.</em></h1>
+            <p class="hero-lead">
+              Accept your approved loan today. If you complete your payoff within
+              14 calendar days of receiving the funds, we’ll waive the promotional
+              surety fee.
+            </p>
+            <div class="hero-actions">
+              <button class="button button-primary js-interested">
+                Yes, I’m interested <span>→</span>
+              </button>
+              <button class="button button-ghost" id="not-now">Not right now</button>
+            </div>
+            <p class="microcopy">
+              No fee is charged simply for viewing your offer. Complete terms are
+              shown before you sign.
+            </p>
+          </div>
+
+          <aside class="window-card" aria-label="Fourteen day return window">
+            <div class="card-glow"></div>
+            <div class="window-card-head">
+              <span>Your Flex Return window</span>
+              <b>14 DAYS</b>
+            </div>
+            <div class="timeline">
+              <div class="timeline-line"><span></span></div>
+              <div class="timeline-point point-start">
+                <i>1</i>
+                <div>
+                  <strong>Funds received</strong>
+                  <small>Your 14-day window begins</small>
+                </div>
+              </div>
+              <div class="timeline-point point-end">
+                <i>14</i>
+                <div>
+                  <strong>Your decision date</strong>
+                  <small>Choose the path that fits</small>
+                </div>
+              </div>
+            </div>
+            <div class="choice-grid">
+              <div class="choice active">
+                <span class="choice-icon">↩</span>
+                <strong>Complete payoff</strong>
+                <small>Promotional surety fee waived</small>
+              </div>
+              <div class="choice">
+                <span class="choice-icon">✓</span>
+                <strong>Keep the loan</strong>
+                <small>Regular repayment plan continues</small>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="trust-strip">
+        <div>
+          <b>✓</b>
+          <span><strong>Clear deadline</strong>Shown after funding</span>
+        </div>
+        <div>
+          <b>✓</b>
+          <span><strong>Two simple choices</strong>Return or keep</span>
+        </div>
+        <div>
+          <b>✓</b>
+          <span><strong>No prepayment penalty</strong>Complete payoff early</span>
+        </div>
+      </section>
+
+      <section class="section how-it-works">
+        <div class="section-heading">
+          <p class="kicker">Simple by design</p>
+          <h2>How Flex Return works</h2>
+          <p>
+            You’re never left guessing. Your dates, amounts and regular payment
+            schedule are disclosed before you sign.
+          </p>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <div class="step-icon">✦</div>
+            <h3>Complete your profile</h3>
+            <p>Confirm your information and review your approved offer.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <div class="step-icon">$</div>
+            <h3>Receive your funds</h3>
+            <p>Once deposited, your personalized 14-day return window begins.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <div class="step-icon">↔</div>
+            <h3>Choose what works</h3>
+            <p>
+              Complete your payoff within 14 days to waive the surety fee—or keep
+              the loan and follow your repayment plan.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section comparison-section">
+        <div class="section-heading left">
+          <p class="kicker">Know before you choose</p>
+          <h2>Two paths. No surprises.</h2>
+        </div>
+        <div class="comparison">
+          <article class="compare-card return-card">
+            <div class="compare-label">Return within 14 days</div>
+            <h3>Surety fee waived</h3>
+            <p>Only pay the minimal interest incurred and other fees.</p>
+            <ul>
+              <li class="highlight"><span>✓</span> Principal returned and the unpaid surety fee waived</li>
+              <li><span>✓</span> Only the minimal interest incurred</li>
+              <li><span>✓</span> Applicable debit fees</li>
+              <li><span>✓</span> Express-deposit fee included, if selected</li>
+            </ul>
+          </article>
+          <div class="or-badge">OR</div>
+          <article class="compare-card keep-card">
+            <div class="compare-label">Keep the loan</div>
+            <h3>Your plan continues</h3>
+            <p>
+              If the payoff is not completed within 14 days, there’s nothing extra
+              to activate.
+            </p>
+            <ul>
+              <li><span>✓</span> Keep the funds</li>
+              <li><span>✓</span> Follow your signed schedule</li>
+              <li><span>✓</span> Make your regular payments</li>
+              <li><span>✓</span> All disclosed loan costs apply</li>
+              <li class="muted"><span>○</span> Surety fee is not waived</li>
+            </ul>
+          </article>
+        </div>
+        <p class="clarity-note">
+          <strong>Important:</strong> The 14-Day Flex Return offer waives the
+          promotional surety fee only. Your exact payoff may still include accrued
+          interest from the time you received the deposited funds to the time you
+          pay the balance off, the debit fees and express-deposit fee if you
+          selected express deposit.
+        </p>
+      </section>
+
+      <section class="section eligibility">
+        <div class="eligibility-copy">
+          <p class="kicker">Made for approved customers</p>
+          <h2>Is this offer available to me?</h2>
+          <p>
+            The program is offered to selected approved applicants and eligible
+            renewal customers.
+          </p>
+        </div>
+        <div class="eligibility-list">
+          <div>
+            <span>✓</span>
+            <p><strong>Approved applications</strong>Complete your remaining profile details and review the offer.</p>
+          </div>
+          <div>
+            <span>✓</span>
+            <p><strong>Eligible renewals</strong>No active loan, or the approved renewal can pay off the remaining balance.</p>
+          </div>
+          <div>
+            <span>✓</span>
+            <p><strong>Clear account standing</strong>Final eligibility is confirmed before your agreement is issued.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq">
+        <div class="section-heading">
+          <p class="kicker">The details</p>
+          <h2>Questions, answered</h2>
+        </div>
+        <div class="faq-grid">
+          <details open>
+            <summary>When does my 14-day period begin?<span>+</span></summary>
+            <p>
+              It begins on the date the loan funds are deposited. Your exact
+              deadline will be shown in your confirmation.
+            </p>
+          </details>
+          <details>
+            <summary>What must I pay to qualify for the waiver?<span>+</span></summary>
+            <p>
+              You must complete the exact payoff quoted by our team before your
+              deadline. Your exact payoff may include accrued interest from the
+              time you received the deposited funds to the time you pay the balance
+              off, the debit fees and express-deposit fee if you selected express
+              deposit.
+            </p>
+          </details>
+          <details>
+            <summary>What happens if I keep the loan?<span>+</span></summary>
+            <p>
+              Your signed repayment schedule continues. The surety fee and all
+              other disclosed costs remain payable under your agreements.
+            </p>
+          </details>
+          <details>
+            <summary>Can I return only part of the funds?<span>+</span></summary>
+            <p>No.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="decision-section" id="decision-card"></section>
+
+      <footer>
+        <a class="brand footer-brand" href="#top" aria-label="GoLoans home">
+          <img class="brand-logo" src="logo-goloans/Goloans%20logo.svg" alt="GoLoans" />
+        </a>
+        <p>
+          Loan approval and funding are subject to final verification and signed
+          agreements. The applicable credit grantor, GoLoans’ role, costs and
+          repayment terms will be disclosed before signing. This page does not
+          change the terms of an existing agreement.
+        </p>
+        <div>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact support</a>
+        </div>
+      </footer>
+
+      <div class="mobile-bar">
+        <div>
+          <small>14-Day Flex Return</small>
+          <strong>Surety fee waived*</strong>
+        </div>
+        <button class="button button-primary js-interested">I’m interested →</button>
+      </div>
+    </main>
+
+    <script>
+const decisionSection = document.querySelector("#decision-card");
+document.documentElement.classList.add("motion-ready");
+
+const revealObserver = "IntersectionObserver" in window
+  ? new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -40px" })
+  : null;
+
+function registerRevealElements(root = document) {
+  const selectors = [
+    ".trust-strip > div", ".section-heading", ".steps article",
+    ".compare-card", ".clarity-note", ".eligibility-copy",
+    ".eligibility-list > div", ".faq-grid details", ".decision-heading",
+    ".next-step-card", "footer"
+  ];
+  root.querySelectorAll(selectors.join(",")).forEach((element, index) => {
+    if (element.classList.contains("reveal-item")) return;
+    element.classList.add("reveal-item");
+    element.style.setProperty("--reveal-delay", `${(index % 3) * 90}ms`);
+    if (revealObserver) revealObserver.observe(element);
+    else element.classList.add("is-visible");
+  });
+}
+
+const fullDecisionMarkup = `
+  <div class="decision-wrap">
+    <div class="decision-copy decision-heading">
+      <p class="kicker">Your next step</p>
+      <h2>Choose the option that applies to you</h2>
+      <p>Continue your approved application or submit a new renewal request.</p>
+    </div>
+    <div class="next-step-grid">
+      <article class="next-step-card featured">
+        <div class="next-step-label">New customer</div>
+        <div class="next-step-icon">✓</div>
+        <h3>Complete your approved application</h3>
+        <p>Confirm your interest, then continue to your remaining profile information.</p>
+        <label class="consent-row">
+          <input type="checkbox" id="payoff-consent" />
+          <span>I understand that the full quoted payoff must be completed within 14 calendar days of funding for the promotional surety fee to be waived.</span>
+        </label>
+        <button class="button button-primary full" id="profile-button" disabled>
+          Continue to my profile <span>→</span>
+        </button>
+        <p class="demo-note">Review mode: connect this button to your GoForm before launch.</p>
+      </article>
+      <article class="next-step-card renewal-step">
+        <div class="next-step-label">Renewal customer</div>
+        <div class="next-step-icon renewal">↻</div>
+        <h3>Start a Flex Return renewal</h3>
+        <p>For customers with no active loan, or whose approved renewal can pay off their existing balance.</p>
+        <div class="renewal-spacer"></div>
+        <a class="button button-renewal full" href="https://onyx.goloans.ca/clients/application/express/?utm_flex-renew">
+          Start my renewal application <span>→</span>
+        </a>
+      </article>
+    </div>
+  </div>
+`;
+
+const declinedMarkup = `
+  <div class="decision-card compact">
+    <span class="decision-check neutral">✓</span>
+    <div>
+      <h2>No problem.</h2>
+      <p>We won’t activate the Flex Return offer from this page.</p>
+    </div>
+    <button class="text-button" id="changed-mind">Changed your mind?</button>
+  </div>
+`;
+
+function bindDecisionControls() {
+  const consent = document.querySelector("#payoff-consent");
+  const profileButton = document.querySelector("#profile-button");
+
+  if (consent && profileButton) {
+    consent.addEventListener("change", () => {
+      profileButton.disabled = !consent.checked;
+    });
+  }
+
+  const changedMind = document.querySelector("#changed-mind");
+  if (changedMind) {
+    changedMind.addEventListener("click", () => {
+      showFullDecision(false);
+    });
+  }
+}
+
+function showFullDecision(scroll = true) {
+  decisionSection.innerHTML = fullDecisionMarkup;
+  bindDecisionControls();
+  registerRevealElements(decisionSection);
+  if (scroll) {
+    decisionSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function showDeclinedDecision() {
+  decisionSection.innerHTML = declinedMarkup;
+  bindDecisionControls();
+  registerRevealElements(decisionSection);
+}
+
+document.querySelectorAll(".js-interested").forEach((button) => {
+  button.addEventListener("click", () => showFullDecision(true));
+});
+
+document.querySelector("#not-now")?.addEventListener("click", showDeclinedDecision);
+
+showFullDecision(false);
+registerRevealElements();
+    </script>
+  </body>
+</html>
