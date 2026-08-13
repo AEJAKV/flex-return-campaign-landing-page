@@ -229,10 +229,16 @@ h1 em { color: var(--violet); font-style: normal; }
 .summary-row + .summary-row { border-top: 1px dashed #dce7d9; }
 .summary-row strong { flex: 0 0 auto; font-size: 11px; }
 .summary-row .saving { color: #078814; }
-.summary-total { border-top: 1px solid #b9d1b5; justify-content: space-between; align-items: center; margin-top: 3px; padding-top: 12px; display: flex; }
-.summary-total span { color: #087d13; text-transform: uppercase; font-size: 11px; font-weight: 850; }
-.summary-total strong { color: #008a00; letter-spacing: -.04em; font-size: 29px; line-height: 1; }
-.summary-note { color: #7b8491; margin: 8px 0 0; font-size: 9px; line-height: 1.45; }
+.cost-result { border-top: 1px solid #b9d1b5; grid-template-columns: minmax(0,1fr) 118px; align-items: center; gap: 12px; margin-top: 3px; padding-top: 13px; display: grid; }
+.cost-label { color: #087d13; text-transform: uppercase; font-size: 10px; font-weight: 850; }
+.cost-amount { color: #008a00; letter-spacing: -.055em; margin-top: 2px; font-size: 34px; font-weight: 850; line-height: 1; white-space: nowrap; }
+.cost-amount span { font-size: 17px; }
+.payoff-total { margin-top: 7px; font-size: 11px; font-weight: 800; }
+.savings-callout { color: #087d13; text-align: center; background: #eef9ec; border: 1px solid #d5ead1; border-radius: 12px; padding: 10px 7px; }
+.savings-callout b { font-size: 18px; line-height: 1; display: block; }
+.savings-callout span { text-transform: uppercase; margin-top: 5px; font-size: 8px; font-weight: 800; line-height: 1.35; display: block; }
+.saving-check { background: #dff3dc; border-radius: 50%; place-items: center; width: 24px; height: 24px; margin: 0 auto 5px; font-size: 13px; display: grid; }
+.summary-note { color: #7b8491; margin: 9px 0 0; font-size: 8px; line-height: 1.45; }
 .keep-option { background: #f8fcf7; border: 1px solid #c9dfc5; border-radius: 14px; align-items: center; gap: 12px; margin-top: 12px; padding: 11px 14px; display: flex; position: relative; }
 .keep-icon { color: var(--violet); background: #e4f5e2; border-radius: 50%; flex: 0 0 auto; place-items: center; width: 37px; height: 37px; font-size: 23px; font-weight: 800; display: grid; }
 .keep-option strong { color: #087b12; text-transform: uppercase; font-size: 10px; display: block; }
@@ -358,7 +364,9 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
   .hero-actions { justify-content: stretch; display: grid; }
   .button { width: 100%; }
   .window-card { border-radius: 20px; padding: 18px; }
-  .summary-total strong { font-size: 26px; }
+  .cost-result { grid-template-columns: minmax(0,1fr) 102px; gap: 9px; }
+  .cost-amount { font-size: 29px; }
+  .cost-amount span { font-size: 15px; }
   .trust-strip { grid-template-columns: 1fr; margin-top: -22px; }
   .trust-strip > div + div { border-top: 1px solid #e9ebf1; border-left: 0; }
   .section { padding: 78px 20px; }
@@ -529,11 +537,19 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
                 <span>Interest</span>
                 <strong class="saving">WAIVED</strong>
               </div>
-              <div class="summary-total">
-                <span>You pay</span>
-                <strong>$542.26</strong>
+              <div class="cost-result">
+                <div>
+                  <div class="cost-label">Your cost to use $500</div>
+                  <div class="cost-amount"><span>Only</span> $42.26</div>
+                  <div class="payoff-total">Total Day-14 payoff: $542.26</div>
+                </div>
+                <div class="savings-callout">
+                  <i class="saving-check">✓</i>
+                  <b>$275</b>
+                  <span>Surety fee + interest waived</span>
+                </div>
               </div>
-              <p class="summary-note">$500 principal + $42.26 applicable express-deposit and debit fees</p>
+              <p class="summary-note">$500 principal returned + $42.26 applicable express-deposit and debit fees</p>
             </div>
             <div class="keep-option">
               <span class="keep-icon">↻</span>
