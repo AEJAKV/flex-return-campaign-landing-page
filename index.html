@@ -200,35 +200,43 @@ h1 em { color: var(--violet); font-style: normal; }
 
 .window-card {
   backdrop-filter: blur(15px);
-  background: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.94);
   border: 1px solid rgba(193,220,190,.9);
-  border-radius: 28px;
-  padding: 26px;
+  border-radius: 24px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
-  transform: rotate(1deg);
+  transform: rotate(.6deg);
   box-shadow: rgba(44,74,44,.14) 0 35px 80px, #fff 0 1px inset;
 }
 .card-glow { filter: blur(60px); opacity: .7; background: #c5f2e2; border-radius: 50%; width: 220px; height: 220px; position: absolute; top: -120px; right: -80px; }
-.window-card-head { color: #5f6980; border-bottom: 1px solid #e8e8f0; justify-content: space-between; align-items: center; padding-bottom: 22px; font-size: 13px; font-weight: 700; display: flex; position: relative; }
-.window-card-head b { color: #007900; letter-spacing: .08em; background: #ebf8eb; border-radius: 9px; padding: 7px 10px; font-size: 11px; }
-.timeline { height: 206px; margin: 25px 5px 16px; position: relative; }
-.timeline-line { background: #e5e3ed; border-radius: 3px; width: 3px; position: absolute; top: 30px; bottom: 28px; left: 22px; overflow: hidden; }
-.timeline-line span { background: linear-gradient(var(--violet),#37a737); border-radius: inherit; height: 52%; display: block; }
-.timeline-point { align-items: center; gap: 14px; display: flex; position: absolute; left: 0; }
-.timeline-point i { background: var(--violet); color: #fff; border: 6px solid #e5f5e5; border-radius: 50%; place-items: center; width: 47px; height: 47px; font-size: 11px; font-style: normal; font-weight: 850; display: grid; box-shadow: rgba(0,138,0,.18) 0 5px 12px; }
-.timeline-point div { flex-direction: column; gap: 4px; display: flex; }
-.timeline-point strong { font-size: 14px; }
-.timeline-point small { color: #7b8597; font-size: 12px; }
-.point-start { top: 2px; }
-.point-end { bottom: 2px; }
-.point-end i { color: #a64c00; background: var(--mint); border-color: #fff1df; }
-.choice-grid { grid-template-columns: 1fr 1fr; gap: 10px; display: grid; position: relative; }
-.choice { background: #fafbfc; border: 1px solid #e0e4ec; border-radius: 17px; flex-direction: column; align-items: flex-start; gap: 7px; min-height: 126px; padding: 16px; display: flex; }
-.choice.active { background: #f3fbf3; border-color: #bfddbc; }
-.choice-icon { width: 29px; height: 29px; color: var(--violet); background: #e4f5e4; border-radius: 8px; place-items: center; font-weight: 900; display: grid; }
-.choice strong { font-size: 13px; }
-.choice small { color: #788398; font-size: 11px; line-height: 1.4; }
+.window-card-head { border-bottom: 1px solid #dfe9dc; justify-content: space-between; align-items: center; padding-bottom: 14px; font-size: 14px; font-weight: 800; display: flex; position: relative; }
+.loan-badge { color: #087b12; background: #e8f6e7; border-radius: 9px; padding: 7px 10px; font-size: 10px; font-weight: 850; }
+.sample-timeline { margin: 16px 4px 14px; position: relative; }
+.timeline-line { background: #e3e8df; border-radius: 3px; width: 3px; height: 112px; position: absolute; top: 26px; left: 23px; overflow: hidden; }
+.timeline-line span { background: linear-gradient(var(--violet),#35ad35); border-radius: inherit; height: 54%; display: block; }
+.sample-event { align-items: center; gap: 16px; min-height: 72px; display: flex; position: relative; }
+.sample-event + .sample-event { margin-top: 12px; }
+.day-marker { z-index: 1; color: #fff; background: var(--violet); border: 6px solid #e4f6e4; border-radius: 50%; flex: 0 0 auto; place-items: center; width: 49px; height: 49px; font-size: 13px; font-weight: 850; display: grid; box-shadow: rgba(0,138,0,.2) 0 5px 12px; }
+.sample-event.day-fourteen .day-marker { color: #b45700; background: #ffe4bd; border-color: #fff1dd; }
+.event-copy { min-width: 0; }
+.event-copy b { color: #078313; text-transform: uppercase; font-size: 11px; }
+.day-fourteen .event-copy b { color: #d26800; }
+.event-copy strong { margin-top: 3px; font-size: 14px; display: block; }
+.event-copy small { color: #7a8496; margin-top: 3px; font-size: 10px; display: block; }
+.payoff-summary { background: rgba(251,253,249,.88); border: 1px solid #c8e1c3; border-radius: 15px; padding: 14px 16px; position: relative; }
+.summary-row { justify-content: space-between; align-items: baseline; gap: 14px; padding: 9px 0; font-size: 11px; display: flex; }
+.summary-row + .summary-row { border-top: 1px dashed #dce7d9; }
+.summary-row strong { flex: 0 0 auto; font-size: 11px; }
+.summary-row .saving { color: #078814; }
+.summary-total { border-top: 1px solid #b9d1b5; justify-content: space-between; align-items: center; margin-top: 3px; padding-top: 12px; display: flex; }
+.summary-total span { color: #087d13; text-transform: uppercase; font-size: 11px; font-weight: 850; }
+.summary-total strong { color: #008a00; letter-spacing: -.04em; font-size: 29px; line-height: 1; }
+.summary-note { color: #7b8491; margin: 8px 0 0; font-size: 9px; line-height: 1.45; }
+.keep-option { background: #f8fcf7; border: 1px solid #c9dfc5; border-radius: 14px; align-items: center; gap: 12px; margin-top: 12px; padding: 11px 14px; display: flex; position: relative; }
+.keep-icon { color: var(--violet); background: #e4f5e2; border-radius: 50%; flex: 0 0 auto; place-items: center; width: 37px; height: 37px; font-size: 23px; font-weight: 800; display: grid; }
+.keep-option strong { color: #087b12; text-transform: uppercase; font-size: 10px; display: block; }
+.keep-option small { color: #5f6977; margin-top: 2px; font-size: 9px; display: block; }
 
 .trust-strip { z-index: 4; background: #fff; border: 1px solid #e1e4ec; border-radius: 18px; grid-template-columns: repeat(3,1fr); max-width: 1000px; margin: -30px auto 0; display: grid; position: relative; box-shadow: rgba(49,55,87,.1) 0 20px 50px; }
 .trust-strip > div { align-items: center; gap: 12px; padding: 21px 26px; display: flex; }
@@ -349,9 +357,8 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
   .hero-lead { font-size: 16px; line-height: 1.65; }
   .hero-actions { justify-content: stretch; display: grid; }
   .button { width: 100%; }
-  .window-card { border-radius: 22px; padding: 20px; }
-  .choice-grid { grid-template-columns: 1fr; }
-  .choice { min-height: 102px; }
+  .window-card { border-radius: 20px; padding: 18px; }
+  .summary-total strong { font-size: 26px; }
   .trust-strip { grid-template-columns: 1fr; margin-top: -22px; }
   .trust-strip > div + div { border-top: 1px solid #e9ebf1; border-left: 0; }
   .section { padding: 78px 20px; }
@@ -470,8 +477,7 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
             <h1>Your loan is approved. <em>Keep your options open.</em></h1>
             <p class="hero-lead">
               Accept your approved loan today. If you complete your payoff within
-              14 calendar days of receiving the funds, we’ll waive the promotional
-              surety fee.
+              14 calendar days of receiving the funds, we’ll waive the surety fee.
             </p>
             <div class="hero-actions">
               <button class="button button-primary js-interested">
@@ -485,39 +491,55 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
             </p>
           </div>
 
-          <aside class="window-card" aria-label="Fourteen day return window">
+          <aside class="window-card" aria-label="Sample fourteen day Flex Return payoff">
             <div class="card-glow"></div>
             <div class="window-card-head">
-              <span>Your Flex Return window</span>
-              <b>14 DAYS</b>
+              <span>Sample 14-Day Flex Return</span>
+              <b class="loan-badge">$500 LOAN</b>
             </div>
-            <div class="timeline">
+            <div class="sample-timeline">
               <div class="timeline-line"><span></span></div>
-              <div class="timeline-point point-start">
-                <i>1</i>
-                <div>
-                  <strong>Funds received</strong>
-                  <small>Your 14-day window begins</small>
+              <div class="sample-event day-one">
+                <span class="day-marker">1</span>
+                <div class="event-copy">
+                  <b>Day 1</b>
+                  <strong>$500 loan issued</strong>
+                  <small>Your 14-day Flex Return window begins</small>
                 </div>
               </div>
-              <div class="timeline-point point-end">
-                <i>14</i>
-                <div>
-                  <strong>Your decision date</strong>
-                  <small>Choose the path that fits</small>
+              <div class="sample-event day-fourteen">
+                <span class="day-marker">14</span>
+                <div class="event-copy">
+                  <b>Day 14</b>
+                  <strong>Complete payoff</strong>
+                  <small>Payoff balance: $817.26</small>
                 </div>
               </div>
             </div>
-            <div class="choice-grid">
-              <div class="choice active">
-                <span class="choice-icon">↩</span>
-                <strong>Complete payoff</strong>
-                <small>Promotional surety fee waived</small>
+            <div class="payoff-summary">
+              <div class="summary-row">
+                <span>Day-14 payoff balance</span>
+                <strong>$817.26</strong>
               </div>
-              <div class="choice">
-                <span class="choice-icon">✓</span>
-                <strong>Keep the loan</strong>
-                <small>Regular repayment plan continues</small>
+              <div class="summary-row">
+                <span>Surety fee waived</span>
+                <strong class="saving">−$275.00</strong>
+              </div>
+              <div class="summary-row">
+                <span>Interest</span>
+                <strong class="saving">WAIVED</strong>
+              </div>
+              <div class="summary-total">
+                <span>You pay</span>
+                <strong>$542.26</strong>
+              </div>
+              <p class="summary-note">$500 principal + $42.26 applicable express-deposit and debit fees</p>
+            </div>
+            <div class="keep-option">
+              <span class="keep-icon">↻</span>
+              <div>
+                <strong>Or keep the loan</strong>
+                <small>Your regular repayment plan continues</small>
               </div>
             </div>
           </aside>
@@ -609,7 +631,7 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
         </div>
         <p class="clarity-note">
           <strong>Important:</strong> The 14-Day Flex Return offer waives the
-          promotional surety fee only. Your exact payoff may still include accrued
+          surety fee only. Your exact payoff may still include accrued
           interest from the time you received the deposited funds to the time you
           pay the balance off, the debit fees and express-deposit fee if you
           selected express deposit.
@@ -752,7 +774,7 @@ const fullDecisionMarkup = `
         <p>Confirm your interest, then continue to your remaining profile information.</p>
         <label class="consent-row">
           <input type="checkbox" id="payoff-consent" />
-          <span>I understand that the full quoted payoff must be completed within 14 calendar days of funding for the promotional surety fee to be waived.</span>
+          <span>I understand that the full quoted payoff must be completed within 14 calendar days of funding for the surety fee to be waived.</span>
         </label>
         <button class="button button-primary full" id="profile-button" disabled>
           Continue to my profile <span>→</span>
