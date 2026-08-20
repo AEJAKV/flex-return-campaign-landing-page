@@ -199,15 +199,64 @@ h1 em { color: var(--violet); font-style: normal; }
 .microcopy { color: #7a8599; margin: 15px 0 0; font-size: 12px; line-height: 1.5; }
 
 .window-card {
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,.94);
-  border: 1px solid rgba(193,220,190,.9);
+  background: #fff;
+  border: 0;
   border-radius: 24px;
-  padding: 24px;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  padding: 3px;
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   transform: rotate(.6deg);
-  box-shadow: rgba(44,74,44,.14) 0 35px 80px, #fff 0 1px inset;
+  box-shadow: rgba(44,74,44,.18) 0 35px 80px, rgba(255,255,255,.8) 0 1px inset;
+}
+.window-card::before {
+  content: "";
+  z-index: -2;
+  background: conic-gradient(from 0deg, #008a00, #72d672, #f88a12, #ffd08a, #008a00);
+  width: 190%;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: outline-spin 9s linear infinite;
+}
+.window-card::after {
+  content: "";
+  z-index: -1;
+  background: #fff;
+  border-radius: 21px;
+  position: absolute;
+  inset: 3px;
+}
+.hero-feature-image {
+  z-index: 1;
+  border-radius: 21px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.window-card:hover .hero-feature-image { transform: scale(1.018); }
+.hero-visual {
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+}
+.hero-visual .window-card { width: 100%; }
+.hero-how-button {
+  min-width: 224px;
+  padding: 14px 24px;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: rgba(216,101,0,.28) 0 12px 26px, rgba(255,255,255,.28) 0 1px inset;
 }
 .card-glow { filter: blur(60px); opacity: .7; background: #c5f2e2; border-radius: 50%; width: 220px; height: 220px; position: absolute; top: -120px; right: -80px; }
 .window-card-head { border-bottom: 1px solid #dfe9dc; justify-content: space-between; align-items: center; padding-bottom: 14px; font-size: 14px; font-weight: 800; display: flex; position: relative; }
@@ -363,7 +412,8 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
   .hero-lead { font-size: 16px; line-height: 1.65; }
   .hero-actions { justify-content: stretch; display: grid; }
   .button { width: 100%; }
-  .window-card { border-radius: 20px; padding: 18px; }
+  .window-card { border-radius: 20px; height: auto; padding: 3px; }
+  .window-card::after, .hero-feature-image { border-radius: 17px; }
   .cost-result { grid-template-columns: minmax(0,1fr) 102px; gap: 9px; }
   .cost-amount { font-size: 29px; }
   .cost-amount span { font-size: 15px; }
@@ -394,9 +444,17 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
   * { scroll-behavior: auto !important; transition: none !important; }
 }
 /* Motion and interaction polish */
+@keyframes outline-spin {
+  from { transform: translate(-50%, -50%) rotate(0); }
+  to { transform: translate(-50%, -50%) rotate(1turn); }
+}
 @keyframes hero-rise {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes button-reveal {
+  from { opacity: 0; filter: blur(4px); }
+  to { opacity: 1; filter: blur(0); }
 }
 @keyframes card-arrive {
   from { opacity: 0; transform: translate3d(28px, 12px, 0) rotate(1deg); }
@@ -424,6 +482,10 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
 .motion-ready .window-card {
   opacity: 0;
   animation: card-arrive .9s .28s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.motion-ready .hero-how-button {
+  opacity: 0;
+  animation: button-reveal .65s .82s ease-out forwards;
 }
 .motion-ready .timeline-line span {
   transform: scaleY(0);
@@ -499,66 +561,18 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
             </p>
           </div>
 
-          <aside class="window-card" aria-label="Sample fourteen day Flex Return payoff">
-            <div class="card-glow"></div>
-            <div class="window-card-head">
-              <span>Sample 14-Day Flex Return</span>
-              <b class="loan-badge">$500 LOAN</b>
-            </div>
-            <div class="sample-timeline">
-              <div class="timeline-line"><span></span></div>
-              <div class="sample-event day-one">
-                <span class="day-marker">1</span>
-                <div class="event-copy">
-                  <b>Day 1</b>
-                  <strong>$500 loan issued</strong>
-                  <small>Your 14-day Flex Return window begins</small>
-                </div>
-              </div>
-              <div class="sample-event day-fourteen">
-                <span class="day-marker">14</span>
-                <div class="event-copy">
-                  <b>Day 14</b>
-                  <strong>Complete payoff</strong>
-                  <small>Payoff balance: $817.26</small>
-                </div>
-              </div>
-            </div>
-            <div class="payoff-summary">
-              <div class="summary-row">
-                <span>Day-14 payoff balance</span>
-                <strong>$817.26</strong>
-              </div>
-              <div class="summary-row">
-                <span>Surety fee waived</span>
-                <strong class="saving">−$275.00</strong>
-              </div>
-              <div class="summary-row">
-                <span>Interest fee waived</span>
-                <strong class="saving">−$6.26</strong>
-              </div>
-              <div class="cost-result">
-                <div>
-                  <div class="cost-label">Your cost to use $500</div>
-                  <div class="cost-amount"><span>Only</span> $36.00</div>
-                  <div class="payoff-total">Total Day-14 payoff: $536.00</div>
-                </div>
-                <div class="savings-callout">
-                  <i class="saving-check">✓</i>
-                  <b>$281.26</b>
-                  <span>Surety fee + interest fee waived</span>
-                </div>
-              </div>
-              <p class="summary-note">$500 principal returned + $35 express-deposit fee + $1 debit fee</p>
-            </div>
-            <div class="keep-option">
-              <span class="keep-icon">↻</span>
-              <div>
-                <strong>Or keep the loan</strong>
-                <small>Your regular repayment plan continues</small>
-              </div>
-            </div>
-          </aside>
+          <div class="hero-visual">
+            <aside class="window-card" aria-label="GoLoans Flex Return offer">
+              <img
+                class="hero-feature-image"
+                src="logo-goloans/floating-samthing.webp"
+                alt="GoLoans Flex Return offer"
+                width="1086"
+                height="1448"
+              />
+            </aside>
+            <a class="button button-primary hero-how-button" href="#how-it-works">See How It Works</a>
+          </div>
         </div>
       </section>
 
@@ -577,7 +591,7 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
         </div>
       </section>
 
-      <section class="section how-it-works">
+      <section class="section how-it-works" id="how-it-works">
         <div class="section-heading">
           <p class="kicker">Simple by design</p>
           <h2>How Flex Return works</h2>
@@ -863,6 +877,30 @@ document.querySelector("#not-now")?.addEventListener("click", showDeclinedDecisi
 
 showFullDecision(false);
 registerRevealElements();
+    </script>
+    <script>
+      (function () {
+        function mount() {
+          var widget = document.createElement('echowin-chat-widget');
+          widget.setAttribute('api-key', 'echowin-chat-widget-key-b6fc744a-59d4-4dbf-a076-d8e1a0efcae6');
+          widget.setAttribute('theme', 'green-dark');
+          widget.setAttribute('has-voice', 'false');
+
+          document.body.appendChild(widget);
+
+          var script = document.createElement('script');
+          script.src = 'https://tangerine.next.echo.win/chat-widget.js';
+          script.async = true;
+
+          document.body.appendChild(script);
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', mount);
+        } else {
+          mount();
+        }
+      })();
     </script>
   </body>
 </html>
