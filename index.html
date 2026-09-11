@@ -196,6 +196,7 @@ h1 em { color: var(--violet); font-style: normal; }
 .button-primary:disabled { cursor: not-allowed; opacity: .45; box-shadow: none; transform: none; }
 .button-ghost { color: #526079; background: transparent; border: 1px solid #d7dce7; }
 .button-ghost:hover { background: #fff; }
+.hero-text { color: #526079; padding: 0 12px; min-height: 52px; font-weight: 700; justify-content: center; align-items: center; display: inline-flex; }
 .microcopy { color: #7a8599; margin: 15px 0 0; font-size: 12px; line-height: 1.5; }
 
 .window-card {
@@ -553,7 +554,7 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
               <button class="button button-primary js-interested">
                 Yes, I’m interested <span>→</span>
               </button>
-              <button class="button button-ghost" id="not-now">Not right now</button>
+              <span class="hero-text">Not right now</span>
             </div>
             <p class="microcopy">
               No fee is charged simply for viewing your offer. Complete terms are
@@ -760,6 +761,7 @@ footer > div a { color: #687387; font-size: 11px; text-decoration: none; }
 
     <script>
 const decisionSection = document.querySelector("#decision-card");
+const PROFILE_FORM_URL = "https://form.jotform.com/260405592407455?need_interac=1&need_rv=1&need_employment=1&need_ref2=1&need_paystub=1&need_id=1";
 document.documentElement.classList.add("motion-ready");
 
 const revealObserver = "IntersectionObserver" in window
@@ -807,9 +809,8 @@ const fullDecisionMarkup = `
           <span>I understand that the full quoted payoff must be completed within 14 calendar days of funding for the surety fee to be waived.</span>
         </label>
         <button class="button button-primary full" id="profile-button" disabled>
-          Continue to my profile <span>→</span>
+          Complete my Profile <span>→</span>
         </button>
-        <p class="demo-note">Review mode: connect this button to your GoForm before launch.</p>
       </article>
       <article class="next-step-card renewal-step">
         <div class="next-step-label">Renewal customer</div>
@@ -825,17 +826,6 @@ const fullDecisionMarkup = `
   </div>
 `;
 
-const declinedMarkup = `
-  <div class="decision-card compact">
-    <span class="decision-check neutral">✓</span>
-    <div>
-      <h2>No problem.</h2>
-      <p>We won’t activate the Flex Return offer from this page.</p>
-    </div>
-    <button class="text-button" id="changed-mind">Changed your mind?</button>
-  </div>
-`;
-
 function bindDecisionControls() {
   const consent = document.querySelector("#payoff-consent");
   const profileButton = document.querySelector("#profile-button");
@@ -844,12 +834,9 @@ function bindDecisionControls() {
     consent.addEventListener("change", () => {
       profileButton.disabled = !consent.checked;
     });
-  }
-
-  const changedMind = document.querySelector("#changed-mind");
-  if (changedMind) {
-    changedMind.addEventListener("click", () => {
-      showFullDecision(false);
+    profileButton.addEventListener("click", () => {
+      if (!consent.checked) return;
+      window.location.href = PROFILE_FORM_URL;
     });
   }
 }
@@ -863,17 +850,9 @@ function showFullDecision(scroll = true) {
   }
 }
 
-function showDeclinedDecision() {
-  decisionSection.innerHTML = declinedMarkup;
-  bindDecisionControls();
-  registerRevealElements(decisionSection);
-}
-
 document.querySelectorAll(".js-interested").forEach((button) => {
   button.addEventListener("click", () => showFullDecision(true));
 });
-
-document.querySelector("#not-now")?.addEventListener("click", showDeclinedDecision);
 
 showFullDecision(false);
 registerRevealElements();
